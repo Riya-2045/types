@@ -30,9 +30,9 @@
 //console.log(countVowels("Programming"));
 
 //remove duplicate elements
-const num = [1, 2, 2, 3, 3, 4];
-const result: number[] = [...new Set(num)];
-console.log(result);
+//const num = [1, 2, 2, 3, 3, 4];
+//const result: number[] = [...new Set(num)];
+//console.log(result);
 
 //find longest word
 //function longestWord(str: string): string {
@@ -62,3 +62,11 @@ console.log(result);
 //console.log(isPalindrom("RaceCar"));
 
 //most frequent charracter
+function countChars(str: string) {
+  const map = new Map();
+  for (const char of str) {
+    map.set(char, (map.get(char) || 0) + 1);
+  }
+  return map;
+}
+console.log(countChars("programming"));
