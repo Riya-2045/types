@@ -30,16 +30,9 @@
 //console.log(countVowels("Programming"));
 
 //remove duplicate elements
-//function removeDuplicates(arr: number[]): number[] {
-//const result: number[] = [];
-//for (let i = 0; i < arr.length; i++) {
-//if (!result.includes(arr[i])) {
-//result.push(arr[i]);
-//}
-//}
-//return result;
-//}
-//console.log(removeDuplicates([1, 2, 2, 3, 4, 4, 5]));
+const arr: number[] = [1, 2, 2, 3, 3, 4];
+const result: number[] = [...new Set(arr)];
+console.log(result);
 
 //find longest word
 //function longestWord(str: string): string {
@@ -55,10 +48,10 @@
 //console.log(longestWord("TypeScript makes JavaScript more maintainable"));
 
 //reverse word
-function reverseWord(str: string): string {
-  return str.split(" ").reverse().join(" ");
-}
-console.log(reverseWord("hello world from ts"));
+//function reverseWord(str: string): string {
+//return str.split(" ").reverse().join(" ");
+//}
+//console.log(reverseWord("hello world from ts"));
 
 //check palindrome
 //function isPalindrom(str: string): boolean {
