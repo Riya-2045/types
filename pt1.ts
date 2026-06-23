@@ -1,11 +1,4 @@
-//title case name
-function formatName(name: string): string {
-  return name
-    .split(" ")
-    .map(
-      (word: String) =>
-        word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
-    )
-    .join(" ");
+function reverseWords(str: string): string {
+  return str.split(" ").reverse().join(" ");
 }
-console.log(formatName("priti SarkaR"));
+console.log(reverseWords("hello world from ts"));
