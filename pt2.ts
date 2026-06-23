@@ -30,8 +30,8 @@
 //console.log(countVowels("Programming"));
 
 //remove duplicate elements
-const arr: number[] = [1, 2, 2, 3, 3, 4];
-const result: number[] = [...new Set(arr)];
+const num = [1, 2, 2, 3, 3, 4];
+const result: number[] = [...new Set(num)];
 console.log(result);
 
 //find longest word
