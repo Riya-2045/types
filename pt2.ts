@@ -61,12 +61,37 @@
 //}
 //console.log(isPalindrom("RaceCar"));
 
-//most frequent charracter
-function countChars(str: string) {
-  const map = new Map();
-  for (const char of str) {
-    map.set(char, (map.get(char) || 0) + 1);
+// charracter frequency
+function countChars(str: string): Record<string, number> {
+  const count: Record<string, number> = {};
+  for (let char of str) {
+    if (count[char]) {
+      count[char]++;
+    } else {
+      count[char] = 1;
+    }
   }
-  return map;
+  return count;
 }
 console.log(countChars("programming"));
+
+//most frequent character
+//function maxWord(str: string): string {
+//const count: Record<string, number> = {};
+//let maxChar = "";
+//let maxCount = 0;
+//for (let char of str) {
+//if (count[char]) {
+//count[char]++;
+//} else {
+//count[char] = 1;
+//}
+//if (count[char] > maxCount) {
+//maxCount = count[char];
+//maxChar = char;
+//}
+//}
+
+//return maxChar;
+//}
+//console.log(maxWord("pritiii"));
