@@ -62,36 +62,109 @@
 //console.log(isPalindrom("RaceCar"));
 
 // charracter frequency
-function countChars(str: string): Record<string, number> {
-  const count: Record<string, number> = {};
-  for (let char of str) {
-    if (count[char]) {
-      count[char]++;
-    } else {
-      count[char] = 1;
-    }
-  }
-  return count;
-}
-console.log(countChars("programming"));
-
-//most frequent character
-//function maxWord(str: string): string {
+//function countChars(str: string): Record<string, number> {
 //const count: Record<string, number> = {};
-//let maxChar = "";
-//let maxCount = 0;
 //for (let char of str) {
 //if (count[char]) {
 //count[char]++;
 //} else {
 //count[char] = 1;
 //}
-//if (count[char] > maxCount) {
-//maxCount = count[char];
-//maxChar = char;
 //}
+//return count;
 //}
+//console.log(countChars("programming"));
 
-//return maxChar;
-//}
+//most frequent character
+// function maxWord(str: string): string {
+// const count: Record<string, number> = {};
+// let maxChar = "";
+// let maxCount = 0;
+// for (let char of str) {
+// if (count[char]) {
+// count[char]++;
+// } else {
+// count[char] = 1;
+// }
+// if (count[char] > maxCount) {
+// maxCount = count[char];
+// maxChar = char;
+// }
+// }
+
+// return maxChar;
+// }
 //console.log(maxWord("pritiii"));
+
+//find missing number
+// function missNumber(arr: number[]): number {
+//   const num = arr.at(-1)!;
+//   let full = (num * (num + 1)) / 2;
+//   const missing = arr.reduce((acc, curr) => acc + curr, 0);
+//   return full - missing;
+// }
+// console.log(missNumber([1, 2, 3, 4, 5, 6, 8]));
+
+//first non frequent character
+// function nonfrqChar(str: string): string {
+//   const count: Record<string, number> = {};
+//   let Char = "";
+//   for (let char of str) {
+//     if (count[char]) {
+//       count[char]++;
+//     } else {
+//       count[char] = 1;
+//     }
+//     if (count[char] === 1) {
+//       return char;
+//     }
+//   }
+
+//   return "";
+// }
+//console.log(nonfrqChar("pritiii"));
+
+// function maxWord(str: string): string {
+// const count: Record<string, number> = {};
+// let nonfrqChar = "";
+// let nonfrqCount = Infinity;
+// for (let char of str) {
+// if (count[char]) {
+// count[char]++;
+// } else {
+// count[char] = 1;
+// }
+// if (count[char] < nonfrqCount) {
+// nonfrqCount = count[char];
+// nonfrqChar = char;
+// }
+// }
+
+// return nonfrqChar;
+// }
+//console.log(maxWord("abbcddee"));
+
+//most frequent element
+function maxNum(arr: number[]): number {
+  const count: Record<number, number> = {};
+  let maxNum = arr[0];
+  let maxCount = 0;
+  for (let num of arr) {
+    if (count[num]) {
+      count[num]++;
+    } else {
+      count[num] = 1;
+    }
+    if (count[num] > maxCount) {
+      maxCount = count[num];
+      maxNum = num;
+    }
+  }
+
+  return maxNum;
+}
+console.log(maxNum([1, 2, 3, 2, 4, 1]));
+
+// lastv = c
+// freq =  1
+// aaabbcdde
