@@ -1,147 +1,147 @@
 //reverse a string
-//function reverseString(str: string): string {
-//return str.split("").reverse().join("");
-//}
+function reverseString(str: string): string {
+  return str.split("").reverse().join("");
+}
 //console.log(reverseString("typescript"));
 
 //title case name
-//function formatName(name: string): string {
-//return name
-//.split(" ")
-//.map(
-//(word: String) =>
-//word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
-//)
-//.join(" ");
-//}
+function formatName(name: string): string {
+  return name
+    .split(" ")
+    .map(
+      (word: String) =>
+        word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
+    )
+    .join(" ");
+}
 //console.log(formatName("priti SarkaR"));
 
 //count vowels
-//function countVowels(str: string): number {
-//let count = 0;
-//let vowels = "a,e,i,o,u";
-//for (let i = 0; i < str.length; i++) {
-//if (vowels.includes(str[i].toLowerCase())) {
-//count++;
-//}
-//}
-//return count;
-//}
+function countVowels(str: string): number {
+  let count = 0;
+  let vowels = "a,e,i,o,u";
+  for (let i = 0; i < str.length; i++) {
+    if (vowels.includes(str[i].toLowerCase())) {
+      count++;
+    }
+  }
+  return count;
+}
 //console.log(countVowels("Programming"));
 
 //remove duplicate elements
-//const num = [1, 2, 2, 3, 3, 4];
-//const result: number[] = [...new Set(num)];
+const num = [1, 2, 2, 3, 3, 4];
+const result: number[] = [...new Set(num)];
 //console.log(result);
 
 //find longest word
-//function longestWord(str: string): string {
-//let result = "";
-//const words = str.split(" ");
-//for (let i = 0; i < words.length; i++) {
-//if (words[i].length > result.length) {
-//result = words[i];
-//}
-// }
-// return result;
-//}
+function longestWord(str: string): string {
+  let result = "";
+  const words = str.split(" ");
+  for (let i = 0; i < words.length; i++) {
+    if (words[i].length > result.length) {
+      result = words[i];
+    }
+  }
+  return result;
+}
 //console.log(longestWord("TypeScript makes JavaScript more maintainable"));
 
 //reverse word
-//function reverseWord(str: string): string {
-//return str.split(" ").reverse().join(" ");
-//}
+function reverseWord(str: string): string {
+  return str.split(" ").reverse().join(" ");
+}
 //console.log(reverseWord("hello world from ts"));
 
 //check palindrome
-//function isPalindrom(str: string): boolean {
-//const lowerstr = str.toLowerCase();
-//const result = lowerstr.split("").reverse().join("");
-//return lowerstr === result;
-//}
+function isPalindrom(str: string): boolean {
+  const lowerstr = str.toLowerCase();
+  const result = lowerstr.split("").reverse().join("");
+  return lowerstr === result;
+}
 //console.log(isPalindrom("RaceCar"));
 
 // charracter frequency
-//function countChars(str: string): Record<string, number> {
-//const count: Record<string, number> = {};
-//for (let char of str) {
-//if (count[char]) {
-//count[char]++;
-//} else {
-//count[char] = 1;
-//}
-//}
-//return count;
-//}
+function countChars(str: string): Record<string, number> {
+  const count: Record<string, number> = {};
+  for (let char of str) {
+    if (count[char]) {
+      count[char]++;
+    } else {
+      count[char] = 1;
+    }
+  }
+  return count;
+}
 //console.log(countChars("programming"));
 
 //most frequent character
-// function maxWord(str: string): string {
-// const count: Record<string, number> = {};
-// let maxChar = "";
-// let maxCount = 0;
-// for (let char of str) {
-// if (count[char]) {
-// count[char]++;
-// } else {
-// count[char] = 1;
-// }
-// if (count[char] > maxCount) {
-// maxCount = count[char];
-// maxChar = char;
-// }
-// }
+function maxWor(str: string): string {
+  const count: Record<string, number> = {};
+  let maxChar = "";
+  let maxCount = 0;
+  for (let char of str) {
+    if (count[char]) {
+      count[char]++;
+    } else {
+      count[char] = 1;
+    }
+    if (count[char] > maxCount) {
+      maxCount = count[char];
+      maxChar = char;
+    }
+  }
 
-// return maxChar;
-// }
-//console.log(maxWord("pritiii"));
+  return maxChar;
+}
+//console.log(maxWor("pritiii"));
 
 //find missing number
-// function missNumber(arr: number[]): number {
-//   const num = arr.at(-1)!;
-//   let full = (num * (num + 1)) / 2;
-//   const missing = arr.reduce((acc, curr) => acc + curr, 0);
-//   return full - missing;
-// }
+function missNumber(arr: number[]): number {
+  const num = arr.at(-1)!;
+  let full = (num * (num + 1)) / 2;
+  const missing = arr.reduce((acc, curr) => acc + curr, 0);
+  return full - missing;
+}
 // console.log(missNumber([1, 2, 3, 4, 5, 6, 8]));
 
 //first non frequent character
-// function nonfrqChar(str: string): string {
-//   const count: Record<string, number> = {};
-//   let Char = "";
-//   for (let char of str) {
-//     if (count[char]) {
-//       count[char]++;
-//     } else {
-//       count[char] = 1;
-//     }
-//     if (count[char] === 1) {
-//       return char;
-//     }
-//   }
+function nonfrqChar(str: string): string {
+  const count: Record<string, number> = {};
+  let Char = "";
+  for (let char of str) {
+    if (count[char]) {
+      count[char]++;
+    } else {
+      count[char] = 1;
+    }
+    if (count[char] === 1) {
+      return char;
+    }
+  }
 
-//   return "";
-// }
+  return "";
+}
 //console.log(nonfrqChar("pritiii"));
 
-// function maxWord(str: string): string {
-// const count: Record<string, number> = {};
-// let nonfrqChar = "";
-// let nonfrqCount = Infinity;
-// for (let char of str) {
-// if (count[char]) {
-// count[char]++;
-// } else {
-// count[char] = 1;
-// }
-// if (count[char] < nonfrqCount) {
-// nonfrqCount = count[char];
-// nonfrqChar = char;
-// }
-// }
+function maxWord(str: string): string {
+  const count: Record<string, number> = {};
+  let nonfrqChar = "";
+  let nonfrqCount = Infinity;
+  for (let char of str) {
+    if (count[char]) {
+      count[char]++;
+    } else {
+      count[char] = 1;
+    }
+    if (count[char] < nonfrqCount) {
+      nonfrqCount = count[char];
+      nonfrqChar = char;
+    }
+  }
 
-// return nonfrqChar;
-// }
+  return nonfrqChar;
+}
 //console.log(maxWord("abbcddee"));
 
 //most frequent element
@@ -205,4 +205,38 @@ function maxFrequent(arr: number[]): number | null {
   }
   return maxNum;
 }
-console.log(maxFrequent([1, 2, 3, 2, 4, 1]));
+//console.log(maxFrequent([1, 2, 3, 2, 4, 1]));
+
+//string Compression
+function strCompress(str: string): string {
+  let result = " ";
+  let count = 1;
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === str[i + 1]) {
+      count++;
+    } else {
+      result = result + str[i] + count;
+      count = 1;
+    }
+  }
+  return result;
+}
+//console.log(strCompress("aaabbcccc"));
+
+//group users by role
+function groupUser() {
+  const count: Record<string, string[]> = {};
+  let users = [
+    { name: "john", role: "admin" },
+    { name: "jane", role: "user" },
+  ];
+  for (let user of users) {
+    if (!count[user.role]) {
+      count[user.role] = [];
+    }
+    count[user.role].push(user.name);
+  }
+
+  return count;
+}
+console.log(groupUser());
