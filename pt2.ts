@@ -189,4 +189,20 @@ function validAnagram(str1: string, str2: string): boolean {
   }
   return false;
 }
-console.log(validAnagram("Dormitory", "dirty Room"));
+//console.log(validAnagram("Dormitory", "dirty Room"));
+
+//max frequent tech2
+function maxFrequent(arr: number[]): number | null {
+  const count: Record<number, number> = {};
+  let max = -Infinity;
+  let maxNum = null;
+  for (let i = 0; i < arr.length; i++) {
+    count[arr[i]] = (count[arr[i]] ?? 0) + 1;
+    if (count[arr[i]] > max) {
+      max = count[arr[i]];
+      maxNum = arr[i];
+    }
+  }
+  return maxNum;
+}
+console.log(maxFrequent([1, 2, 3, 2, 4, 1]));
