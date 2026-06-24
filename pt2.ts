@@ -163,8 +163,30 @@ function maxNum(arr: number[]): number {
 
   return maxNum;
 }
-console.log(maxNum([1, 2, 3, 2, 4, 1]));
+//console.log(maxNum([1, 2, 3, 2, 4, 1]));
 
-// lastv = c
-// freq =  1
-// aaabbcdde
+//valid anagram
+function validAnagram(str1: string, str2: string): boolean {
+  const count: Record<string, number> = {};
+  const s1 = str1.toLowerCase().replaceAll(" ", "");
+  const s2 = str2.toLowerCase().replaceAll(" ", "");
+  for (let char of str1) {
+    if (count[char]) {
+      count[char]++;
+    } else {
+      count[char] = 1;
+    }
+    for (let char of str2) {
+      if (count[char]) {
+        count[char]--;
+      } else {
+        count[char] = 1;
+      }
+    }
+    if (s1.length === s2.length) {
+      return true;
+    }
+  }
+  return false;
+}
+console.log(validAnagram("Dormitory", "dirty Room"));
