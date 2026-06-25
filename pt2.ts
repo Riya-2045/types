@@ -122,7 +122,7 @@ function nonfrqChar(str: string): string {
 
   return "";
 }
-//console.log(nonfrqChar("pritiii"));
+console.log(nonfrqChar("aabc"));
 
 function maxWord(str: string): string {
   const count: Record<string, number> = {};
@@ -239,4 +239,99 @@ function groupUser() {
 
   return count;
 }
-console.log(groupUser());
+//console.log(groupUser());
+
+//fine duplicate value
+
+function findDuplicates(arr: number[]) {
+  const count: Record<number, number> = {};
+  const result: number[] = [];
+  for (let num of arr) {
+    count[num] = (count[num] || 0) + 1;
+  }
+  for (let value in count) {
+    if (count[value] > 1) {
+      result.push(Number(value));
+    }
+  }
+  return result;
+}
+//console.log(findDuplicates([1, 2, 3, 2, 4, 5, 4]));
+
+//array intersection
+function arrIntersection(arr1: number[], arr2: number[]): number[] {
+  const set = new Set(arr1);
+  const result: number[] = [];
+  for (let num of arr2) {
+    if (set.has(num)) {
+      result.push(num);
+    }
+  }
+  return result;
+}
+//console.log(arrIntersection([1, 2, 3, 4], [3, 4, 5, 6]));
+// array difference
+function arrDifference(arr1: number[], arr2: number[]): number[] {
+  const set = new Set(arr2);
+  const result: number[] = [];
+  for (let num of arr1) {
+    if (!set.has(num)) {
+      result.push(num);
+    }
+  }
+  return result;
+}
+//console.log(arrDifference([1, 2, 3, 4, 5], [3, 4, 5]));
+//longest common prefix
+function loncomPrefix(str: string[]): string {
+  if (str.length === 0) return " ";
+  let prefix = str[0];
+  for (let i = 1; i < str.length; i++) {
+    while (!str[i].startsWith(prefix)) {
+      prefix = prefix.slice(0, -1);
+    }
+  }
+  return prefix;
+}
+//console.log(loncomPrefix(["flower", "flow", "flight"]));
+//moves zeros to end
+function moveZeros(arr: number[]): number[] {
+  let zeroCount = 0;
+  const result: number[] = [];
+  //let zeroCount = 0;
+  for (const num of arr) {
+    if (num === 0) {
+      zeroCount++;
+    } else {
+      result.push(num);
+    }
+  }
+  while (zeroCount > 0) {
+    result.push(0);
+    zeroCount--;
+  }
+  return result;
+}
+//console.log(moveZeros([0, 1, 0, 3, 12]));
+//valid parentheses
+function validParenth(str: string): boolean {
+  const stack: string[] = [];
+
+  const couple: Record<string, string> = {
+    ")": "(",
+    "}": "{",
+    "]": "[",
+  };
+  for (let char of str) {
+    if (char === "(" || char === "{" || char === "[") {
+      stack.push(char);
+    } else {
+      let top = stack.pop();
+      if (top !== couple[char]) {
+        return false;
+      }
+    }
+  }
+  return stack.length === 0;
+}
+console.log(validParenth("({[]})"));
