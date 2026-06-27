@@ -106,23 +106,24 @@ function missNumber(arr: number[]): number {
 // console.log(missNumber([1, 2, 3, 4, 5, 6, 8]));
 
 //first non frequent character
-function nonfrqChar(str: string): string {
-  const count: Record<string, number> = {};
-  let Char = "";
-  for (let char of str) {
-    if (count[char]) {
-      count[char]++;
-    } else {
-      count[char] = 1;
-    }
-    if (count[char] === 1) {
-      return char;
-    }
-  }
+// function nonfrqChar(str: string): string {
+//   const count: Record<string, number> = {};
+//   //let Char = "";
+//   for (let char of str) {
+//     if (count[char]) {
+//       count[char]++;
+//     } else {
+//       count[char] = 1;
+//     }
+//     for (let char of str)
+//       if (count[char] === 1) {
+//         return char;
+//       }
+//   }
 
-  return "";
-}
-console.log(nonfrqChar("aabc"));
+//   return "";
+// }
+// console.log(nonfrqChar("aabc"));
 
 function maxWord(str: string): string {
   const count: Record<string, number> = {};
@@ -189,7 +190,7 @@ function validAnagram(str1: string, str2: string): boolean {
   }
   return false;
 }
-//console.log(validAnagram("Dormitory", "dirty Room"));
+console.log(validAnagram("Dormitory", "dirty Room"));
 
 //max frequent tech2
 function maxFrequent(arr: number[]): number | null {
@@ -317,21 +318,144 @@ function moveZeros(arr: number[]): number[] {
 function validParenth(str: string): boolean {
   const stack: string[] = [];
 
-  const couple: Record<string, string> = {
+  const pairs: Record<string, string> = {
     ")": "(",
     "}": "{",
     "]": "[",
   };
-  for (let char of str) {
+
+  for (const char of str) {
     if (char === "(" || char === "{" || char === "[") {
       stack.push(char);
     } else {
-      let top = stack.pop();
-      if (top !== couple[char]) {
+      const top = stack.pop();
+
+      if (top !== pairs[char]) {
         return false;
       }
     }
   }
+
   return stack.length === 0;
 }
-console.log(validParenth("({[]})"));
+//console.log(validParenth("({[]})"));
+function nonfrqChar(str: string): string {
+  let count = 0;
+  let ch = "";
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === ch) {
+      count++;
+    } else {
+      if (count === 1) {
+        return ch;
+      }
+      ch = str[i];
+      count = 1;
+    }
+  }
+
+  if (count === 1) return ch;
+
+  return "";
+}
+
+//console.log(nonfrqChar("bcca"));
+//longest unique substring
+function lonunisub(str: string) {
+  let set = new Set();
+  let left = 0;
+  let maxLength = 0;
+  for (let i = 0; i < str.length; i++) {
+    while (set.has(str[i])) {
+      set.delete(str[left]);
+      left++;
+    }
+    set.add(str[i]);
+    maxLength = Math.max(maxLength, i - left + 1);
+  }
+  return maxLength;
+}
+//console.log(lonunisub("abcabcbb"));
+//group anagrams
+function groupAnagrams(words: string[]): string[][] {
+  const map = new Map<string, string[]>();
+  for (const word of words) {
+    const key = word.split("").sort().join("");
+    if (!map.has(key)) {
+      map.set(key, []);
+    }
+    map.get(key)!.push(word);
+  }
+  return Array.from(map.values());
+}
+//console.log(groupAnagrams(["eat", "tea", "ate", "bat"]));
+//merge overlapping intervals
+function mergeIntervals(intervals: number[][]): number[][] {
+  if (intervals.length === 0) {
+    return [];
+  }
+  intervals.sort((a, b) => a[0] - b[0]);
+  const result: number[][] = [];
+  result.push(intervals[0]);
+  for (let i = 1; i < intervals.length; i++) {
+    const last = result[result.length - 1];
+    if (intervals[i][0] <= last[1]) {
+      last[1] = Math.max(last[1], intervals[i][1]);
+    } else {
+      result.push(intervals[i]);
+    }
+  }
+  return result;
+}
+// console.log(
+//   mergeIntervals([
+//     [1, 3],
+//     [2, 6],
+//     [8, 10],
+//     [9, 12],
+//   ]),
+// );
+
+//rotate array
+function rotateArray(arr: number[], k: number): number[] {
+  const n = arr.length;
+  k = k % n;
+  const result = new Array(n);
+  for (let i = 0; i < n; i++) {
+    result[(i + k) % n] = arr[i];
+  }
+  return result;
+}
+//console.log(rotateArray([1, 2, 3, 4, 5], 2));
+//mini groupby utility
+function groupBy(arr: any[], key: string) {
+  const result: any = {};
+  for (const item of arr) {
+    const value = item[key];
+    if (!result[value]) {
+      result[value] = [];
+    }
+    result[value].push(item);
+  }
+  return result;
+}
+const users = [
+  { name: "rosei", role: "admin" },
+  { name: "riya", role: "user" },
+  { name: "reha", role: "admin" },
+];
+
+//console.log(groupBy(users, "role"));
+//flatten nested arrays
+function flatArray(arr: any[]): any[] {
+  let result = [];
+  for (let item of arr) {
+    if (Array.isArray(item)) {
+      result.push(...flatArray(item));
+    } else {
+      result.push(item);
+    }
+  }
+  return result;
+}
+//console.log(flatArray([1, [2, 3], [4, [5, 6]]]));
