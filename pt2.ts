@@ -190,7 +190,7 @@ function validAnagram(str1: string, str2: string): boolean {
   }
   return false;
 }
-console.log(validAnagram("Dormitory", "dirty Room"));
+//console.log(validAnagram("Dormitory", "dirty Room"));
 
 //max frequent tech2
 function maxFrequent(arr: number[]): number | null {
@@ -375,7 +375,7 @@ function lonunisub(str: string) {
   }
   return maxLength;
 }
-//console.log(lonunisub("abcabcbb"));
+console.log(lonunisub("abcabcbb"));
 //group anagrams
 function groupAnagrams(words: string[]): string[][] {
   const map = new Map<string, string[]>();
@@ -459,3 +459,47 @@ function flatArray(arr: any[]): any[] {
   return result;
 }
 //console.log(flatArray([1, [2, 3], [4, [5, 6]]]));
+//log analyzer
+function longAnalyzer(logs: any[]) {
+  const users = new Set();
+  const actionCount: any = {};
+  const userCount: any = {};
+  for (const log of logs) {
+    users.add(log.user);
+    actionCount[log.action] = (actionCount[log.action] || 0) + 1;
+    userCount[log.user] = (userCount[log.user] || 0) + 1;
+  }
+  let mostActiveUser = "";
+  let max = 0;
+  for (const user in userCount) {
+    if (userCount[user] > max) {
+      max = userCount[user];
+      mostActiveUser = user;
+    }
+  }
+  return {
+    uniqueUsers: [...users],
+    actionCounts: actionCount,
+    mostActiveUser: mostActiveUser,
+  };
+}
+const logs = [
+  { user: "riya", action: "login" },
+  { user: "rosei", action: "login" },
+  { user: "riya", action: "logout" },
+  { user: "reha", action: "login" },
+  { user: "riya", action: "login" },
+];
+//console.log(longAnalyzer(logs));
+//search query normalizer
+function normaLize(text: string): string {
+  const words = text.trim().toLowerCase().split(" ");
+  let result: string[] = [];
+  for (const word of words) {
+    if (!result.includes(word)) {
+      result.push(word);
+    }
+  }
+  return result.join(" ");
+}
+//console.log(normaLize(" Learn TypeScript TYPEscript "));
