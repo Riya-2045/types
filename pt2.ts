@@ -297,21 +297,19 @@ function loncomPrefix(str: string[]): string {
 //console.log(loncomPrefix(["flower", "flow", "flight"]));
 //moves zeros to end
 function moveZeros(arr: number[]): number[] {
-  let zeroCount = 0;
-  const result: number[] = [];
-  //let zeroCount = 0;
-  for (const num of arr) {
-    if (num === 0) {
-      zeroCount++;
-    } else {
-      result.push(num);
+  let index = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] !== 0) {
+      arr[index] = arr[i];
+      index++;
     }
   }
-  while (zeroCount > 0) {
-    result.push(0);
-    zeroCount--;
+  while (index < arr.length) {
+    arr[index] = 0;
+    index++;
   }
-  return result;
+  return arr;
 }
 //console.log(moveZeros([0, 1, 0, 3, 12]));
 //valid parentheses
@@ -375,7 +373,7 @@ function lonunisub(str: string) {
   }
   return maxLength;
 }
-console.log(lonunisub("abcabcbb"));
+//uconsole.log(lonunisub("abcabcbb"));
 //group anagrams
 function groupAnagrams(words: string[]): string[][] {
   const map = new Map<string, string[]>();
@@ -503,3 +501,167 @@ function normaLize(text: string): string {
   return result.join(" ");
 }
 //console.log(normaLize(" Learn TypeScript TYPEscript "));
+
+// find missing 2
+function findMissing(arr: number[]): number {
+  let xor = 0;
+  let n = arr.length + 1;
+  for (let i = 1; i <= n; i++) {
+    xor = xor ^ i;
+  }
+  for (let num of arr) {
+    xor = xor ^ num;
+  }
+  return xor;
+}
+//console.log(findMissing([1, 2, 4, 5]));
+//build a tiny in memory crud store
+//function person(): User[] {
+
+type User = {
+  id: number;
+  name: string;
+};
+class Person {
+  private users: User[] = [];
+  //constructor
+  constructor() {}
+
+  //create
+  createUser(name: string) {
+    const user: User = {
+      id: Math.floor(Math.random() * 10000),
+      name,
+    };
+    this.users.push(user);
+  }
+
+  //read
+  readUsers(name?: string): User[] {
+    if (!name) return this.users;
+
+    return this.users.filter((user) =>
+      user.name.toLowerCase().includes(name.toLowerCase()),
+    );
+  }
+
+  //update=
+  updateUser(id: number, newName: string) {
+    const user = this.users.find((u) => u.id === id);
+    if (!user) {
+      console.log(`User with id ${id} not found`);
+      return;
+    }
+    user.name = newName;
+  }
+
+  //delete
+  deleteUser(id: number) {
+    this.users = this.users.filter((user) => user.id !== id);
+  }
+
+  //paginate
+  paginate(size: number, page: number): User[] {
+    // const start = (page - 1) * size;
+    const totalPages = Math.ceil(this.users.length / size);
+    if (page < 1 || page > totalPages) {
+      console.log("Invalid Page Number");
+      return [];
+    }
+    const start = (page - 1) * size;
+    return this.users.slice(start, start + size);
+  }
+}
+const person = new Person();
+
+// Create
+// person.createUser("Riya");
+// person.createUser("Rosei");
+// person.createUser("Reha");
+// person.createUser("Rahul");
+
+// // Read
+// console.log("All Users:");
+// console.log(person.readUsers());
+
+// // Update
+// const updateId = person.readUsers()[1].id;
+// person.updateUser(updateId, "Rose");
+
+// console.log("After Update:");
+// console.log(person.readUsers());
+
+// // Delete
+// const deleteId = person.readUsers()[3].id;
+// person.deleteUser(deleteId);
+
+// console.log("After Delete:");
+// console.log(person.readUsers());
+
+// // Search
+// console.log("Search User:");
+// console.log(person.readUsers("ri"));
+
+// // Pagination
+// console.log("Pagination Page 1:");
+// console.log(person.paginate(1, 2));
+
+// console.log("Pagination Page 2:");
+// console.log(person.paginate(2, 2));
+
+// console.log("Pagination Page 3:");
+// console.log(person.paginate(3, 2));
+
+//prime or not
+function primeNumber(num: number): {} {
+  if (num <= 1) {
+    return false;
+  }
+  for (let i = 2; i < num; i++) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
+  return true;
+}
+console.log(primeNumber(13));
+
+//prime number upto N
+
+function uptoNumber(n: number): void {
+  for (let num = 2; num <= n; num++) {
+    // return false;
+    let isPrime = true;
+
+    for (let i = 2; i < num; i++) {
+      if (num % i === 0) {
+        // return false;
+        isPrime = false;
+        break;
+      }
+    }
+    // return true;
+    if (isPrime) {
+      console.log(num);
+    }
+  }
+}
+// uptoNumber(13);
+
+// | ===== | ===== | ===== | == |
+
+/**
+ * N
+ * Math.ceil(N/10)
+ * 10
+ * ceil
+ * 2.4 -> 3
+ * 2.1 -> 3
+ * 2.0000 -> 2
+ *
+ * floor
+ * 2.4 -> 2
+ * 2.1 -> 2
+ * 2.0000 -> 2
+ */
+// Math.ceil(12 / 5);
