@@ -624,7 +624,7 @@ function primeNumber(num: number): {} {
   }
   return true;
 }
-console.log(primeNumber(13));
+//console.log(primeNumber(13));
 
 //prime number upto N
 
@@ -642,11 +642,32 @@ function uptoNumber(n: number): void {
     }
     // return true;
     if (isPrime) {
-      console.log(num);
+      //console.log(num);
     }
   }
 }
 // uptoNumber(13);
+//
+function isPrime(num: number): {} {
+  if (num <= 1) {
+    return false;
+  }
+  for (let i = 2; i < num; i++) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
+  return true;
+}
+function printPrime(n: number): void {
+  for (let num = 2; num <= n; num++) {
+    // return false;
+    if (isPrime(num)) {
+      //console.log(num);
+    }
+  }
+}
+//printPrime(20);
 
 // | ===== | ===== | ===== | == |
 
@@ -665,3 +686,20 @@ function uptoNumber(n: number): void {
  * 2.0000 -> 2
  */
 // Math.ceil(12 / 5);
+
+// const p1 = new Promise((resolve) => setTimeout(() => resolve(10), 100));
+
+// const p2 = new Promise((resolve) => setTimeout(() => resolve(20), 200));
+
+// const p3 = new Promise((_, reject) => setTimeout(() => reject(30), 300));
+
+// const p4 = new Promise((resolve) => setTimeout(() => resolve(40), 400));
+
+// Promise.all([p1, p2, p3, p4])
+//   .then((result) => console.log("Resolved:", result))
+//   .catch((err) => console.log("Rejected:", err));
+
+//   function reverseWords(str: string): string {
+//   return str.split(" ").reverse().join(" ");
+// }
+// console.log(reverseWords("hello world from ts"));
