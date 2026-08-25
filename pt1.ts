@@ -306,14 +306,133 @@
 // console.log(renewSubscription(false, true));
 
 //Bank transaction flagging
-function transactionFlage(
-  international: boolean,
-  amount: number,
-  txCount: number,
-): string {
-  if (amount > 100000 || (international && amount > 50000) || txCount > 5) {
-    return "Flagged";
+// function transactionFlage(
+//   international: boolean,
+//   amount: number,
+//   txCount: number,
+// ): string {
+//   if (amount > 100000 || (international && amount > 50000) || txCount > 5) {
+//     return "Flagged";
+//   }
+//   return "Normal";
+// }
+// console.log(transactionFlage(true, 60000, 2));
+
+//Employee bonus
+
+// function employeeBonus(rating: number, attendance: number): number {
+//   if (attendance < 80) {
+//     return 0;
+//   }
+//   if (rating === 5) {
+//     return 20;
+//   }
+//   if (rating === 4) {
+//     return 10;
+//   }
+//   if (rating === 3) {
+//     return 5;
+//   }
+//   return 0;
+// }
+// console.log(employeeBonus(5, 75));
+
+//cloud storage plan
+
+// function storageWarning(plan: string, usage: number): string {
+//   let limit: number;
+//   if (plan === "Free") {
+//     limit = 5;
+//   } else if (plan === "Pro") {
+//     limit = 100;
+//   } else {
+//     return "No Warning";
+//   }
+//   if (usage > limit * 0.9) {
+//     return "Warning"; //90%=90/100=0.9
+//   }
+//   return "Normal";
+// }
+// console.log(storageWarning("Pro", 95));
+
+//Flight boarding decision
+
+// function boarding(
+//   international: boolean,
+//   ticket: boolean,
+//   checkin: boolean,
+//   passport: boolean,
+// ): string {
+//   if (!ticket || !checkin) {
+//     return "Cannot Board";
+//   }
+//   if (international && !passport) {
+//     return "Cannot Board";
+//   }
+//   return "Can Board";
+// }
+// console.log(boarding(true, true, true, false));
+
+//Online exam monitoring
+
+// function examMonitoring(switches: number, cameraOff: boolean): string {
+//   const tooManySwitches = switches > 3;
+//   if (tooManySwitches && cameraOff) {
+//     return "Disqualified";
+//   }
+//   if (tooManySwitches || cameraOff) {
+//     return "Flagged";
+//   }
+//   return "Normal";
+// }
+// console.log(examMonitoring(5, true));
+
+//Scholarship tier
+
+// function Scholarship(marks: number, income: number): string {
+//   let tier: number;
+//   if (marks >= 90) {
+//     tier = 3;
+//   }
+//   if (marks >= 90) {
+//     tier = 3;
+//   } else if (marks >= 80) {
+//     tier = 2;
+//   } else if (marks >= 70) {
+//     tier = 1;
+//   } else {
+//     return "No Scholarship";
+//   }
+//   if (income > 1000000) {
+//     tier--;
+//   }
+//   if (tier === 3) {
+//     return "Full Scholarship";
+//   }
+//   if (tier === 2) {
+//     return "Half Scholarship";
+//   }
+//   if (tier === 1) {
+//     return "Quarter Scholarship";
+//   }
+//   return "No Scholarship";
+// }
+// console.log(Scholarship(92, 1200000));
+
+//Food delivery ETA
+
+function deliveryETA(distance: number, rain: boolean): number {
+  let time: number;
+  if (distance < 3) {
+    time = 15;
+  } else if (distance < 8) {
+    time = 30;
+  } else {
+    time = 45;
   }
-  return "Normal";
+  if (rain) {
+    time += 10;
+  }
+  return time;
 }
-console.log(transactionFlage(true, 60000, 2));
+console.log(deliveryETA(10, true));
